@@ -35,3 +35,6 @@ monetdb_setup/test
 *.o_lib
 *.o_test
 *.bin
+log
+*log
+*.log
