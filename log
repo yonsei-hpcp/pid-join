@@ -1,0 +1,693 @@
+[36mPacket Size: 8
+Xfer Worker: 40
+Zipf Factor: 0.000000
+Scale Factor: 0
+Timeline Path: notimeline
+[37mAllocated: left
+total_byte_size: 4194304
+total_tuple_cnt: 524288
+total_byte_leftover: 0
+total_tuple_leftover: 0
+tuple_per_dpu: 8192
+byte_per_dpu: 65536
+| Start Loading Column left
+LoadColumn left Done.
+Allocated: right
+total_byte_size: 4194304
+total_tuple_cnt: 524288
+total_byte_leftover: 0
+total_tuple_leftover: 0
+tuple_per_dpu: 8192
+byte_per_dpu: 65536
+| Start Loading Column right
+LoadColumn right Done.
+4-th rank is defect: 62 DPUs alloced.
+7-th rank is defect: 63 DPUs alloced.
+8-th rank is defect: 63 DPUs alloced.
+9-th rank is defect: 56 DPUs alloced.
+13-th rank is defect: 63 DPUs alloced.
+this->dpu_pairs.size(): 1
+Ranks to use: 1
+this->dpu_pairs.size(): 1
+Execute HOST_FUNC_SEND_DATA_OPT 0
+Execute HOST_FUNC_SEND_DATA_OPT 1
+Execute CONTROL_FUNC_SYNC_THREADS 2
+Execute COMPOUND_FUNC_GLB_PARTITION 3
+Execute COMPOUND_FUNC_GLB_PARTITION 4
+Execute COMPOUND_FUNC_RNS_JOIN 5
+=== DPU#0x30190000 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8082
+=== DPU#0x30190001 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8251
+=== DPU#0x30190002 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8156
+=== DPU#0x30190003 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8121
+=== DPU#0x30190004 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8276
+=== DPU#0x30190005 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8245
+=== DPU#0x30190006 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8358
+=== DPU#0x30190007 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8314
+=== DPU#0x30190100 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8237
+=== DPU#0x30190101 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8214
+=== DPU#0x30190102 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8190
+=== DPU#0x30190103 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8107
+=== DPU#0x30190104 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8202
+=== DPU#0x30190105 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8302
+=== DPU#0x30190106 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8185
+=== DPU#0x30190107 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8161
+=== DPU#0x30190200 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8040
+=== DPU#0x30190201 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8216
+=== DPU#0x30190202 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8134
+=== DPU#0x30190203 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8343
+=== DPU#0x30190204 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8294
+=== DPU#0x30190205 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8158
+=== DPU#0x30190206 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8120
+=== DPU#0x30190207 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8178
+=== DPU#0x30190300 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8250
+=== DPU#0x30190301 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8173
+=== DPU#0x30190302 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8195
+=== DPU#0x30190303 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8122
+=== DPU#0x30190304 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8279
+=== DPU#0x30190305 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8335
+=== DPU#0x30190306 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8152
+=== DPU#0x30190307 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8006
+=== DPU#0x30190400 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8201
+=== DPU#0x30190401 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8208
+=== DPU#0x30190402 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8248
+=== DPU#0x30190403 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8018
+=== DPU#0x30190404 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8036
+=== DPU#0x30190405 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8285
+=== DPU#0x30190406 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8245
+=== DPU#0x30190407 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8108
+=== DPU#0x30190500 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8230
+=== DPU#0x30190501 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8416
+=== DPU#0x30190502 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8120
+=== DPU#0x30190503 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8292
+=== DPU#0x30190504 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8041
+=== DPU#0x30190505 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8153
+=== DPU#0x30190506 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8196
+=== DPU#0x30190507 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8254
+=== DPU#0x30190600 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8177
+=== DPU#0x30190601 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8149
+=== DPU#0x30190602 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 7993
+=== DPU#0x30190603 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8140
+=== DPU#0x30190604 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8206
+=== DPU#0x30190605 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8170
+=== DPU#0x30190606 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8205
+=== DPU#0x30190607 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8215
+=== DPU#0x30190700 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8125
+=== DPU#0x30190701 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8159
+=== DPU#0x30190702 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8236
+=== DPU#0x30190703 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8251
+=== DPU#0x30190704 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8329
+=== DPU#0x30190705 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8230
+=== DPU#0x30190706 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8142
+=== DPU#0x30190707 ===
+key_sorted_addr: 1048576 TOTAL_ELEM: 8114
+=== DPU#0x30190000 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8082
+=== DPU#0x30190001 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8251
+=== DPU#0x30190002 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8156
+=== DPU#0x30190003 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8121
+=== DPU#0x30190004 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8276
+=== DPU#0x30190005 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8245
+=== DPU#0x30190006 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8358
+=== DPU#0x30190007 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8314
+=== DPU#0x30190100 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8237
+=== DPU#0x30190101 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8214
+=== DPU#0x30190102 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8190
+=== DPU#0x30190103 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8107
+=== DPU#0x30190104 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8202
+=== DPU#0x30190105 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8302
+=== DPU#0x30190106 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8185
+=== DPU#0x30190107 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8161
+=== DPU#0x30190200 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8040
+=== DPU#0x30190201 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8216
+=== DPU#0x30190202 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8134
+=== DPU#0x30190203 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8343
+=== DPU#0x30190204 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8294
+=== DPU#0x30190205 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8158
+=== DPU#0x30190206 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8120
+=== DPU#0x30190207 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8178
+=== DPU#0x30190300 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8250
+=== DPU#0x30190301 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8173
+=== DPU#0x30190302 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8195
+=== DPU#0x30190303 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8122
+=== DPU#0x30190304 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8279
+=== DPU#0x30190305 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8335
+=== DPU#0x30190306 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8152
+=== DPU#0x30190307 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8006
+=== DPU#0x30190400 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8201
+=== DPU#0x30190401 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8208
+=== DPU#0x30190402 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8248
+=== DPU#0x30190403 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8018
+=== DPU#0x30190404 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8036
+=== DPU#0x30190405 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8285
+=== DPU#0x30190406 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8245
+=== DPU#0x30190407 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8108
+=== DPU#0x30190500 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8230
+=== DPU#0x30190501 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8416
+=== DPU#0x30190502 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8120
+=== DPU#0x30190503 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8292
+=== DPU#0x30190504 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8041
+=== DPU#0x30190505 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8153
+=== DPU#0x30190506 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8196
+=== DPU#0x30190507 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8254
+=== DPU#0x30190600 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8177
+=== DPU#0x30190601 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8149
+=== DPU#0x30190602 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 7993
+=== DPU#0x30190603 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8140
+=== DPU#0x30190604 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8206
+=== DPU#0x30190605 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8170
+=== DPU#0x30190606 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8205
+=== DPU#0x30190607 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8215
+=== DPU#0x30190700 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8125
+=== DPU#0x30190701 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8159
+=== DPU#0x30190702 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8236
+=== DPU#0x30190703 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8251
+=== DPU#0x30190704 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8329
+=== DPU#0x30190705 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8230
+=== DPU#0x30190706 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8142
+=== DPU#0x30190707 ===
+key_sorted_addr: 1196032 TOTAL_ELEM: 8114
+=== DPU#0x30190000 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:146, 523993 > 473377/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190001 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:59, 524239 > 17329/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190002 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:220, 524269 > 507329/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190003 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:185, 524282 > 523153/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190004 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:84, 524227 > 1353/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190005 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:53, 524268 > 17241/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190006 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:166, 524253 > 35433/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190007 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:122, 524266 > 51113/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190100 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:45, 524199 > 722/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190101 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:22, 524259 > 16738/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190102 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:254, 524238 > 507874/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190103 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:171, 524237 > 522930/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190104 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:10, 524231 > 170/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190105 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:110, 524263 > 18154/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190106 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:249, 524204 > 507802/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190107 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:225, 524252 > 523802/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190200 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:104, 524262 > 472707/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190201 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:24, 524235 > 16771/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190202 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:198, 524250 > 506979/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190203 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:151, 524277 > 51571/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190204 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:102, 524160 > 1643/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190205 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:222, 524198 > 490987/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190206 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:184, 524038 > 506763/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190207 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:242, 524287 > 524075/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190300 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:58, 524279 > 932/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190301 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:237, 524281 > 491220/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190302 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:3, 524240 > 32820/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190303 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:186, 524208 > 523172/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190304 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:87, 524229 > 1404/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190305 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:143, 524285 > 18684/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190306 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:216, 524201 > 507276/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190307 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:70, 524258 > 521324/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190400 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:9, 524284 > 149/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190401 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:16, 524275 > 16645/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190402 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:56, 524200 > 33669/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190403 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:82, 524254 > 521509/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190404 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:100, 524184 > 472653/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190405 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:93, 524286 > 17885/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190406 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:53, 524248 > 33629/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190407 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:172, 524223 > 522957/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190500 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:38, 524288 > 614/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190501 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:224, 524267 > 19974/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190502 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:184, 524113 > 506758/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190503 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:100, 524203 > 50758/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190504 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:105, 524272 > 472734/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190505 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:217, 524271 > 490910/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190506 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:4, 524165 > 32846/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190507 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:62, 524152 > 50158/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190600 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:241, 524273 > 474903/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190601 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:213, 524251 > 490839/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190602 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:57, 524264 > 504727/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190603 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:204, 524181 > 523463/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190604 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:14, 524261 > 239/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190605 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:234, 524230 > 491183/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190606 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:13, 524270 > 32991/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190607 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:23, 524274 > 49535/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190700 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:189, 524278 > 474072/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190701 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:223, 524242 > 491000/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190702 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:44, 524222 > 33480/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190703 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:59, 524226 > 50104/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190704 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:137, 524247 > 2208/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190705 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:38, 524283 > 17008/ elem_idx = 8192 r_total_bytes = 87552
+=== DPU#0x30190706 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:206, 524233 > 507120/ elem_idx = 7936 r_total_bytes = 87552
+=== DPU#0x30190707 ===
+r_total_elem: 10944
+R_key_sorted_addr: 1048576
+R_total_elem	10944	
+S_total_elem	10944	
+ERROR:e:178, 524255 > 523056/ elem_idx = 7936 r_total_bytes = 87552
+Execute HOST_FUNC_RECV_DATA_OPT 6
+0-0-0.056590-1.391375-HOST_FUNC_SEND_DATA_OPT-
+0-1-1.397854-2.620398-HOST_FUNC_SEND_DATA_OPT-
+0-2-2.626273-2.627011-CONTROL_FUNC_SYNC_THREADS-
+0-3-2.633414-12.209729-COMPOUND_FUNC_GLB_PARTITION-unused,left
+0-4-12.217694-21.122377-COMPOUND_FUNC_GLB_PARTITION-unused,right
+0-5-21.154417-24.418982-HOST_FUNC_ROTATE_AND_STREAM-
+0-6-24.425631-27.585295-HOST_FUNC_ROTATE_AND_STREAM-
+0-7-27.605492-65.649277-MPSM_JOIN_SORT_R-
+0-8-65.662224-104.177879-MPSM_JOIN_SORT_S-
+0-9-104.186295-110.331566-MPSM_JOIN_PROBE-
+0-10-110.341789-112.628189-FINISH_J-
+0-11-112.640846-118.878860-HOST_FUNC_RECV_DATA_OPT-
+MISSRATE -nan
+FILL FACTOR -nan
+524288 176128  700416/700416 tuples: 524288 diff:176128
