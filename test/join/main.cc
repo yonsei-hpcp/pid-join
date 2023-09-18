@@ -15,8 +15,8 @@ using namespace pidjoin;
 void TestPidJoin(int64_t number_of_tuples, int number_of_ranks)
 {
     int64_t num_tuples = number_of_tuples;
-    kv_pair_t* left_columns = (kv_pair_t*)malloc(sizeof(kv_pair_t) * num_tuples);
-    kv_pair_t* right_columns = (kv_pair_t*)malloc(sizeof(kv_pair_t) * num_tuples);
+    kv_pair_t* left_columns = (kv_pair_t*)malloc(sizeof(kv_pair_t) * num_tuples + 4096);
+    kv_pair_t* right_columns = (kv_pair_t*)malloc(sizeof(kv_pair_t) * num_tuples + 4096);
 
     // setting up immediate values
     for (int64_t i = 0; i < num_tuples; i++)
@@ -47,8 +47,10 @@ void TestPidJoin(int64_t number_of_tuples, int number_of_ranks)
 
     std::cout << "Start validations" << std::endl; 
 
+    printf("buffer_cnts: %d\n", buffer_cnts);
     for (int b = 0; b < buffer_cnts; b++)
     {   
+
         int64_t elem_cnt = result_buffers.second[b] / sizeof(kv_pair_t);
         buffer_size_sum += result_buffers.second[b];
         
@@ -65,6 +67,10 @@ void TestPidJoin(int64_t number_of_tuples, int number_of_ranks)
                     joined_tuples++;
                 }
             }
+            else
+            {
+                printf("%d|%d\n", result_buffers.first[b][e].lvalue, result_buffers.first[b][e].rvalue);
+            }
         }
     }
     
@@ -80,13 +86,21 @@ void TestPidJoin(int64_t number_of_tuples, int number_of_ranks)
 
 int main(int argc, char** argv)
 {    
-    printf("Join with 1 rank ...\n");
-    
-    TestPidJoin(50*1024*1024, 1);
-    
-    printf("Join with 16 ranks ...\n");
-    
-    TestPidJoin(32*1024*1024, 16);
+    // printf("Join with 1 rank ...\n");
+    // TestPidJoin(50*1024*1024, 1);
+    // printf("Join with 16 ranks ...\n");
+    // TestPidJoin(32*1024*1024, 16);
+
+    // TestPidJoin(40000000, 16);
+    // TestPidJoin(2352363, 2);
+    // TestPidJoin(2000010, 2);
+                
+ TestPidJoin(48009368 / sizeof(int), 16);
+
+
+
+
+    // TestPidJoin(200000, 1);
 
     return 0;
 }

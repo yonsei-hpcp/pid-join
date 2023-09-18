@@ -58,7 +58,7 @@ namespace pidjoin
         arg[0].histogram_start_byte = histogram_node->start_byte;
         arg[0].partition_num = partition_num;
         arg[0].table_r_num_elem = input_arr_node->data_bytes[0] / sizeof(tuplePair_t);
-
+        
         arg_rank.push_back((char *)(arg + 0));
 
         for (int i = 1; i < NUM_DPU_RANK; i++)
@@ -66,7 +66,7 @@ namespace pidjoin
             // Fill in Args
             arg[i] = arg[0];
             arg[i].table_r_num_elem = input_arr_node->data_bytes[i] / sizeof(tuplePair_t);
-
+            
             arg_rank.push_back((char *)(arg + i));
         }
 

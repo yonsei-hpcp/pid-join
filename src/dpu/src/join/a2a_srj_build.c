@@ -269,8 +269,8 @@ int main(void)
                         #ifdef VALIDATION
                         if ((Hash_Table_buff[hashed].lvalue) == (KEY))
                         {
-                            // printf("%sError!: Key Duplicated. A:%d %u B:%d %u\n", 
-                            //     KYEL, Hash_Table_buff[hashed].rvalue, Hash_Table_buff[hashed].lvalue,  j, KEY);
+                            printf("%sError!: Key Duplicated. [%d/%d] A:%d %u B:%d %u\n", 
+                                KYEL, e, elem_for_this_blk, Hash_Table_buff[hashed].lvalue, Hash_Table_buff[hashed].rvalue, KEY, TID);
                             dpu_results.ERROR_TYPE_2 = 1;
                             return 0;
                         }

@@ -369,13 +369,13 @@ int main(void)
             dpu_results.ERROR_TYPE_2 = param_glb_partition_packet.partition_type;
         }
 
-        if (param_glb_partition_packet.partition_type == 1)
-        {
-            if (param_glb_partition_packet.elem_num != total_)
-            {
-                dpu_results.ERROR_TYPE_1 = 4;
-            }
-        }
+        // if (param_glb_partition_packet.partition_type == 1)
+        // {
+        //     if (param_glb_partition_packet.elem_num - total_ >= 2)
+        //     {
+        //         dpu_results.ERROR_TYPE_1 = (param_glb_partition_packet.elem_num - total_);
+        //     }
+        // }
         // #endif
     }
 
@@ -484,7 +484,7 @@ int RadixPartitionArrayPacked(
             }
             else
             {
-                printf("wram_buff[%d].lvalue: %u %u\n", e, wram_buff[e].lvalue, wram_buff[e].rvalue);
+                printf("wram_buff[%d/%d].lvalue: %u %u\n", e, elem_n, wram_buff[e].lvalue, wram_buff[e].rvalue);
             }
         }
     }

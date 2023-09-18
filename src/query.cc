@@ -150,28 +150,42 @@ void JoinInstance::LoadColumn(void* data_ptr, int64_t num_tuples, std::string co
         imm_pair->second->at(rank_id).resize(NUM_DPU_RANK);
     }
 
-    int64_t total_byte_size = num_tuples * sizeof(tuplePair_t);
-    int64_t total_tuple_cnt = num_tuples;
-    int64_t total_byte_leftover = total_byte_size % (num_ranks * NUM_DPU_RANK);
-    int64_t total_tuple_leftover = total_tuple_cnt % (num_ranks * NUM_DPU_RANK);
-    int64_t tuple_per_dpu = total_tuple_cnt / (num_ranks * NUM_DPU_RANK);
-    int64_t byte_per_dpu = tuple_per_dpu * sizeof(tuplePair_t);
+    int64_t origin_tuple_cnt = num_tuples;
+    int64_t origin_byte_size = num_tuples * sizeof(tuplePair_t);
     
-    if (total_tuple_leftover > 0)
-        byte_per_dpu += sizeof(tuplePair_t);
+    std::cout << "origin_tuple_cnt: " << origin_tuple_cnt << std::endl;
+    std::cout << "origin_byte_size: " << origin_byte_size << std::endl;
 
-    printf("total_byte_size: %ld\n", total_byte_size);
-    printf("total_tuple_cnt: %ld\n", total_tuple_cnt);
-    printf("total_byte_leftover: %ld\n", total_byte_leftover);
-    printf("total_tuple_leftover: %ld\n", total_tuple_leftover);
-    printf("tuple_per_dpu: %ld\n", tuple_per_dpu);
-    printf("byte_per_dpu: %ld\n", byte_per_dpu);
+    int64_t alignment = num_ranks * NUM_DPU_RANK * 8;
+    int64_t offset = (alignment) - (origin_byte_size % alignment);
+    
+    int64_t total_byte_size = origin_byte_size + offset;
+    int64_t total_tuple_cnt = total_byte_size / sizeof(tuplePair_t);
 
-    printf("| Start Loading Column %s\n", col_name.c_str());
+    int64_t tuple_per_dpu = (total_tuple_cnt) / (num_ranks * NUM_DPU_RANK);
+    int64_t byte_per_dpu = tuple_per_dpu * sizeof(tuplePair_t);
 
-    int dpu_ctr = 0;
+    int offseted_dpus = offset / byte_per_dpu;
+    if (offset % byte_per_dpu > 0)
+    {
+        offseted_dpus++;
+    }
+
+    int dpu_start_offseted = (num_ranks * NUM_DPU_RANK) - offseted_dpus;
+    
+    
+    std::cout << "dpu_start_offseted: " << dpu_start_offseted << std::endl;
+
+    std::cout << "offset: " << offset << std::endl;
+
+    std::cout << "tuple_per_dpu: " << tuple_per_dpu << std::endl;
+    std::cout << "byte_per_dpu: " << byte_per_dpu << std::endl;
+
+
     int64_t data_ctr = 0;
     // Read File
+
+    int dpu_count = 0;
     for (int rank_id = 0; rank_id < num_ranks; rank_id++)
     {
         std::vector<char*>& write_buffers = std::ref(imm_pair->first->at(rank_id));
@@ -180,39 +194,116 @@ void JoinInstance::LoadColumn(void* data_ptr, int64_t num_tuples, std::string co
         
         for (int dpu_id = 0; dpu_id < NUM_DPU_RANK; dpu_id++)
         {
-            // write_buffers[dpu_id] = write_buffers[0] + byte_per_dpu * dpu_id;
-
-            if (total_tuple_leftover == 0)
+            if (dpu_start_offseted <= dpu_count)
             {
-                // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu);
-                write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
+                write_buffers[dpu_id] = (char*)malloc(byte_per_dpu);
+                if (data_ctr >= origin_byte_size)
+                {
+                    memset(write_buffers[dpu_id], 0, byte_per_dpu); 
+                }
+                else
+                {
+                    for (int i = 0; i < byte_per_dpu / sizeof(int64_t); i++)
+                    {
+                        if (origin_byte_size - (data_ctr + i * sizeof(int64_t)))
+                        {
+                            ((int64_t*)(write_buffers[dpu_id]))[i] = ((int64_t*)(data_ptr_uint8 + data_ctr))[i];
+                        }
+                        else
+                        {
+                            ((int64_t*)(write_buffers[dpu_id]))[i] = 0;
+                        }
+                    }
+
+                }
+                // write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
                 data_ctr += (byte_per_dpu);
                 block_bytes[dpu_id] = (byte_per_dpu);
             }
             else
             {
-                if (dpu_ctr >= total_tuple_leftover)
-                {
-                    // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu - sizeof (tuplePair_t));
-                    write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
-                    data_ctr += (byte_per_dpu - sizeof (tuplePair_t));
-                    block_bytes[dpu_id] = (byte_per_dpu - sizeof (tuplePair_t));
-                    // printf("block_bytes[%d]: %d\n", dpu_id, block_bytes[dpu_id]);
-                }
-                else
-                {
-                    // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu);
-                    write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
-                    data_ctr += (byte_per_dpu);
-                    block_bytes[dpu_id] = (byte_per_dpu);
-                    // printf("block_bytes[%d]: %d\n", dpu_id, block_bytes[dpu_id]);
-                }    
+
+                // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu);
+                write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
+                data_ctr += (byte_per_dpu);
+                block_bytes[dpu_id] = (byte_per_dpu);
+                // printf("block_bytes[%d]: %d\n", dpu_id, block_bytes[dpu_id]);
             }
-            
-            dpu_ctr++;
-        } 
-    }
+            dpu_count++;
+        }
+    } 
+
+    std::cout << "data_ctr " << data_ctr  << std::endl;
+    std::cout << "total_tuple_cnt * sizeof(tuplePair_t)" << total_tuple_cnt * sizeof(tuplePair_t)  << std::endl;
 }
+    
+    
+    /////////////////////////
+    /////////////////////////
+
+    // int64_t total_tuple_leftover = total_tuple_cnt % (num_ranks * NUM_DPU_RANK);
+    // int64_t tuple_per_dpu = total_tuple_cnt / (num_ranks * NUM_DPU_RANK);
+    // int64_t byte_per_dpu = tuple_per_dpu * sizeof(tuplePair_t);
+    
+    // if (total_tuple_leftover > 0)
+    //     byte_per_dpu += sizeof(tuplePair_t);
+
+    // printf("total_byte_size: %ld\n", total_byte_size);
+    // printf("total_tuple_cnt: %ld\n", total_tuple_cnt);
+    // printf("total_tuple_leftover: %ld\n", total_tuple_leftover);
+    // printf("tuple_per_dpu: %ld\n", tuple_per_dpu);
+    // printf("byte_per_dpu: %ld\n", byte_per_dpu);
+
+    // printf("| Start Loading Column %s\n", col_name.c_str());
+
+    // int dpu_ctr = 0;
+    // int64_t data_ctr = 0;
+    // // Read File
+    // for (int rank_id = 0; rank_id < num_ranks; rank_id++)
+    // {
+    //     std::vector<char*>& write_buffers = std::ref(imm_pair->first->at(rank_id));
+    //     std::vector<int>& block_bytes = std::ref(imm_pair->second->at(rank_id));
+    //     // write_buffers[0] = (char*)aligned_alloc(NUM_DPU_RANK, byte_per_dpu * NUM_DPU_RANK);
+        
+    //     for (int dpu_id = 0; dpu_id < NUM_DPU_RANK; dpu_id++)
+    //     {
+    //         // write_buffers[dpu_id] = write_buffers[0] + byte_per_dpu * dpu_id;
+
+    //         if (total_tuple_leftover == 0)
+    //         {
+    //             // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu);
+    //             write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
+    //             data_ctr += (byte_per_dpu);
+    //             block_bytes[dpu_id] = (byte_per_dpu);
+    //         }
+    //         else
+    //         {
+    //             if (dpu_ctr >= total_tuple_leftover)
+    //             {
+    //                 // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu - sizeof (tuplePair_t));
+    //                 write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
+    //                 if ((intptr_t)(write_buffers[dpu_id]) % 8 != 0)
+    //                     printf("write_buffers[%d]: 0x%lx aligned?: %d\n", dpu_id, write_buffers[dpu_id]);
+    //                 data_ctr += (byte_per_dpu - sizeof (tuplePair_t));
+    //                 block_bytes[dpu_id] = (byte_per_dpu - sizeof (tuplePair_t));
+    //                 // printf("block_bytes[%d]: %d\n", dpu_id, block_bytes[dpu_id]);
+    //             }
+    //             else
+    //             {
+    //                 // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu);
+    //                 write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
+    //                 if ((intptr_t)(write_buffers[dpu_id]) % 8 != 0)
+    //                     printf("write_buffers[%d]: 0x%lx aligned?: %d\n", dpu_id, write_buffers[dpu_id]);
+    //                 data_ctr += (byte_per_dpu);
+    //                 block_bytes[dpu_id] = (byte_per_dpu);
+    //                 // printf("block_bytes[%d]: %d\n", dpu_id, block_bytes[dpu_id]);
+    //             }    
+    //         }
+            
+    //         dpu_ctr++;
+    //     } 
+    // }
+// }
 
 
 std::pair<int, lock_ *> JoinInstance::GetQueueElemByIndex(int index)

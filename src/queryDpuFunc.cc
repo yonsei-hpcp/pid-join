@@ -51,6 +51,7 @@ void JoinOperator::Execute_PHJ_BUILD_HASH_TABLE(IDPHandler *idp_handler, int ran
 
     idp_handler->HandleKernelResults(this->join_instance, rank_id, DPU_FUNC_PHJ_BUILD_HASH_TABLE_LINEAR_PROBE, *params);
 
+    // CHAEMIN
     // idp_handler->ReadLog(rank_id);
 }
 
@@ -246,6 +247,7 @@ void JoinOperator::Execute_GLB_PARTITION_PACKET(
     idp_handler->RunKernel(rank_id);
     idp_handler->HandleKernelResults(this->join_instance, rank_id, DPU_FUNC_GLB_PARTITION_PACKET, *params);
 
+    // CHAEMIN
     // idp_handler->ReadLog(rank_id);
 }
 

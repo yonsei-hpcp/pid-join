@@ -75,6 +75,7 @@ namespace pidjoin
         arg[0].partition_num = partition_num;
         arg[0].result_offset = result_buffer_node->start_byte;
         arg[0].packet_size = packet_size;
+        // printf("PARTITION: arg[%d].elem_num: %d\n", 0, arg[0].elem_num);
         
         // printf("arg_rank: size: %d\n", arg_rank.size());
         arg_rank.push_back((char*)(arg + 0));
@@ -84,8 +85,9 @@ namespace pidjoin
             // Fill in Args
             arg[i] = arg[0];
             arg[i].dpu_id = i;
-            // arg[i].elem_num = input_buffer_node1->data_bytes[i] / div_val;
-
+            arg[i].elem_num = input_buffer_node1->data_bytes[i] / div_val;
+            arg[i].elem_num = input_buffer_node1->data_bytes[0] / div_val;
+            // printf("PARTITION: arg[%d].elem_num: %d\n", i, arg[i].elem_num);
             arg_rank.push_back((char*)(arg + i));
         }
 
@@ -131,6 +133,8 @@ namespace pidjoin
         arg[0].partition_info_start_byte = partition_info_node->start_byte;
         arg[0].histogram_start_byte = histogram_node->start_byte;
         arg[0].partition_num = partition_num;
+        
+        // printf("COUNT: arg[%d].elem_num: %d\n", 0, arg[0].elem_num);
 
         arg_rank.push_back((char*)(arg + 0));
         
@@ -139,7 +143,8 @@ namespace pidjoin
             // Fill in Args
             arg[i] = arg[0];
             // arg[i].elem_num = input_buffer_node->data_bytes[i] / div_val;
-
+            arg[i].elem_num = input_buffer_node->data_bytes[0] / div_val;
+            // printf("COUNT: arg[%d].elem_num: %d\n", i, arg[i].elem_num);
             arg_rank.push_back((char*)(arg + i));
         }
 

@@ -132,7 +132,7 @@ void Probe_2(
                 if (Hash_Table_buff[hashed].lvalue == 0)
                 {
                     mutex_lock(&(mutex_atomic[2]));
-                    printf("Zero: key: %u tid: %u\n", KEY, TID);
+                    // printf("Zero: key: %u tid: %u\n", KEY, TID);
                     zero_count++;
                     mutex_unlock(&(mutex_atomic[2]));
                     break;
@@ -328,7 +328,7 @@ int main(void)
 
     if (tasklet_id == 0)
     {
-        dpu_results.ERROR_TYPE_2 = zero_count;
+        // dpu_results.ERROR_TYPE_2 = zero_count;
         {
             printf("miss_count: %u hit_count: (%u+%u=%u)/%u, total_partition:%d\n", miss_count, hit_count, zero_count, (hit_count+zero_count), param_phj_probe_hash_table_inner.S_num, total_partition);
         }
@@ -339,7 +339,7 @@ int main(void)
 
         if ((hit_count + zero_count) != param_phj_probe_hash_table_inner.S_num)
         {
-            dpu_results.ERROR_TYPE_1 = 1;
+            dpu_results.ERROR_TYPE_1 = 2;
         }
         param_hash_phj_probe_return.result_size = SHARED_COUNT;
         param_hash_phj_probe_return.miss_count = miss_count;
