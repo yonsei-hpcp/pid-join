@@ -447,6 +447,11 @@ int RadixPartitionArrayPacked(
 
         for (int e = 0; e < elem_n; e++)
         {
+            if (((int32_t)(wram_buff[e].lvalue)) < 0)
+            {
+                dpu_results.ERROR_TYPE_3 = 1;
+            }
+
             if (wram_buff[e].lvalue != 0)
             {
                 // Hash

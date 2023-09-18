@@ -753,6 +753,13 @@ void JoinOperator::Execute_HOST_FUNC_SEND_DATA_OPT(
     usleep(10);
 #endif
 
+    // Check if last rank
+    bool last_rank = false;
+    if ((this->join_instance->num_rank_allocated - 1) == rank_id)
+    {
+        last_rank = true;
+    }
+    
     struct timespec timer_start[3];
     struct timespec timer_stop[3];
 
@@ -784,6 +791,8 @@ void JoinOperator::Execute_HOST_FUNC_SEND_DATA_OPT(
 
         total_bytes += data_bytes[d];
     }
+
+    printf("USG: total_bytes: %d\n", total_bytes);
 
     int64_t *buff = (int64_t *)(rankwise_mbank_buff_col->first->at(rank_id).at(0));
 

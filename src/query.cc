@@ -140,6 +140,19 @@ ResultBuffers_t JoinInstance::ExecuteJoin(std::string join_type)
 
 void JoinInstance::LoadColumn(void* data_ptr, int64_t num_tuples, std::string col_name)
 {
+    if (col_name == "left")
+    {
+        this->lefthand_elem_cnt = num_tuples;
+    }
+    else if (col_name == "right")
+    {
+        this->righthand_elem_cnt = num_tuples;
+    }
+    else
+    {
+        std::cout << "Column name error: " << col_name << " should be left or right" << std::endl;
+        exit(-1);
+    }
     int num_ranks = this->num_rank_allocated;
     uint8_t* data_ptr_uint8 = (uint8_t*)data_ptr;
     RankwiseMemoryBankBufferPair_t* imm_pair = this->AllocateEmptyMemoryBankBuffers(num_ranks, col_name.c_str());
@@ -175,7 +188,6 @@ void JoinInstance::LoadColumn(void* data_ptr, int64_t num_tuples, std::string co
     
     
     std::cout << "dpu_start_offseted: " << dpu_start_offseted << std::endl;
-
     std::cout << "offset: " << offset << std::endl;
 
     std::cout << "tuple_per_dpu: " << tuple_per_dpu << std::endl;
@@ -197,32 +209,37 @@ void JoinInstance::LoadColumn(void* data_ptr, int64_t num_tuples, std::string co
             if (dpu_start_offseted <= dpu_count)
             {
                 write_buffers[dpu_id] = (char*)malloc(byte_per_dpu);
+                
                 if (data_ctr >= origin_byte_size)
                 {
                     memset(write_buffers[dpu_id], 0, byte_per_dpu); 
                 }
                 else
                 {
+                    printf("dpu_id: %d\n", dpu_id);
+
                     for (int i = 0; i < byte_per_dpu / sizeof(int64_t); i++)
                     {
-                        if (origin_byte_size - (data_ctr + i * sizeof(int64_t)))
+                        int64_t curr_offset = data_ctr + i * sizeof(tuplePair_t);
+                        
+                        if ((origin_byte_size - curr_offset) > 0)
                         {
                             ((int64_t*)(write_buffers[dpu_id]))[i] = ((int64_t*)(data_ptr_uint8 + data_ctr))[i];
+                            // std::cout << ((tuplePair_t*)(write_buffers[dpu_id]))[i].lvalue << " | " << ((tuplePair_t*)(write_buffers[dpu_id]))[i].rvalue << std::endl;
                         }
                         else
                         {
                             ((int64_t*)(write_buffers[dpu_id]))[i] = 0;
                         }
                     }
-
                 }
+                
                 // write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
                 data_ctr += (byte_per_dpu);
                 block_bytes[dpu_id] = (byte_per_dpu);
             }
             else
             {
-
                 // memcpy(write_buffers[dpu_id], data_ptr_uint8 + data_ctr, byte_per_dpu);
                 write_buffers[dpu_id] = (char*)(data_ptr_uint8 + data_ctr);
                 data_ctr += (byte_per_dpu);
@@ -487,7 +504,7 @@ JoinInstance::JoinInstance(int num_rank_allocated_)
     if (xfer_worker_num == 0)
         xfer_worker_num = 8;
 
-    this->packet_size = 8;
+    this->packet_size = 16;
     this->scale_factor = 0;
     this->zipf_factor = 0;
 

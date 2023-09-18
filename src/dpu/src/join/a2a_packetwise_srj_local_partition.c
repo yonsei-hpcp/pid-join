@@ -125,19 +125,19 @@ int Do_Partitioning_Packetwise(
 			{
 				if (packet_read_buff[i].lvalue == 0) continue;
 				// Validation
-				uint32_t tid_, key_;
+				int32_t tid_, key_;
 				key_ = packet_read_buff[i].lvalue;
 
-				// if (key_ < 0)
-				// {
-				// 	dpu_results.ERROR_TYPE_0 = 2;
-				// 	break;
-				// }
-				// if (key_ == 0)
-				// {
-				// 	dpu_results.ERROR_TYPE_0 = 4;
-				// 	break;
-				// }
+				if (key_ < 0)
+				{
+					dpu_results.ERROR_TYPE_0 = 2;
+					break;
+				}
+				if (key_ == 0)
+				{
+					dpu_results.ERROR_TYPE_0 = 4;
+					break;
+				}
 
 				uint32_t val = (RADIX & local_partition_hash(key_));
 
@@ -205,14 +205,15 @@ int Do_Partitioning_Packetwise(
 			for (int i = 0; i < (elem_in_buff); i++)
 			{
 				if (packet_read_buff[i].lvalue == 0) continue;
-				uint32_t key_ = packet_read_buff[i].lvalue;
+				int32_t key_ = packet_read_buff[i].lvalue;
 
 				// Validation
-				// if (key_ < 0)
-				// {
-				// 	dpu_results.ERROR_TYPE_0 = 2;
-				// 	break;
-				// }
+				if (key_ < 0)
+				{
+					printf("Key_: %d [%d/%d]\n", key_, i, elem_in_buff);
+					dpu_results.ERROR_TYPE_0 = 3;
+					break;
+				}
 
 				uint32_t val = (RADIX & local_partition_hash(key_));
 
@@ -400,7 +401,7 @@ int main(void)
 					if (packet_read_buff[i].lvalue == 0)
 						continue;
 					// Validation
-					int64_t key_;
+					int32_t key_;
 					key_ = packet_read_buff[i].lvalue;
 
 					if (key_ < 0)

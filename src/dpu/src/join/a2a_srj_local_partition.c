@@ -149,12 +149,11 @@ int Do_Partitioning(
         {
             tuplePair_t *packet_read_buff = (tuplePair_t *)read_buffer;
             // Build local histogram
-            uint32_t key_;
+            int32_t key_;
             for (int i = 0; i < elem_num_in_buff; i++)
             {
                 key_ = packet_read_buff[i].lvalue;
 
-#ifdef VALIDATION
                 if (key_ < 0)
                 {
                     dpu_results.ERROR_TYPE_0 = 2;
@@ -165,7 +164,6 @@ int Do_Partitioning(
                     dpu_results.ERROR_TYPE_0 = 4;
                     break;
                 }
-#endif
 
                 uint32_t val = (RADIX & local_partition_hash(key_));
 
@@ -235,7 +233,7 @@ int Do_Partitioning(
                 if (packet_read_buff[i].lvalue == 0)
                     continue;
                 // Validation
-                uint32_t key_;
+                int32_t key_;
                 key_ = packet_read_buff[i].lvalue;
 
                 uint32_t val = (RADIX & local_partition_hash(key_));
@@ -422,10 +420,9 @@ int main(void)
                 for (int i = 0; i < elem_num_in_buff; i++)
                 {
                     // Validation
-                    uint32_t key_;
+                    int32_t key_;
                     key_ = packet_read_buff[i].lvalue;
 
-                    #ifdef VALIDATION
                     if (key_ < 0)
                     {
                         dpu_results.ERROR_TYPE_0 = 2;
@@ -436,7 +433,6 @@ int main(void)
                         dpu_results.ERROR_TYPE_0 = 4;
                         break;
                     }
-                    #endif
 
                     mutex_lock(&(mutex_atomic[49]));
                     uint32_t hist = write_buffer[0];

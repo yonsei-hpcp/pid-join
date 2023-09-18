@@ -170,7 +170,8 @@ void JoinOperator::Execute_PACKETWISE_LOCAL_HASH_PARTITIONING(IDPHandler *idp_ha
         *params,
         (char *)local_partition_nums);
 
-    // idp_handler->ReadLog(rank_id);
+    // CHAEMIN
+    idp_handler->ReadLog(rank_id);
 }
 
 void JoinOperator::Execute_GLB_PARTITION_COUNT(

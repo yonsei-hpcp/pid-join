@@ -249,7 +249,6 @@ int main(void)
 
                     if (Hash_Table_buff[hashed].lvalue == 0)
                     {
-
                         Hash_Table_buff[hashed].lvalue = KEY;
                         mutex_unlock(mutex_atomic + hashed_mutex);
                         

@@ -108,6 +108,8 @@ namespace pidjoin
     private:
         pthread_mutex_t instance_lock;
 
+        int64_t lefthand_elem_cnt;
+        int64_t righthand_elem_cnt;
         int scale_factor;
         int packet_size;
         float zipf_factor;
