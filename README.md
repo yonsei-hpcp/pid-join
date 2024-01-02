@@ -4,11 +4,13 @@ This repository contains the source code for [PID-Join \[SIGMOD '23\]](https://d
 Please cite the following paper if you utilize PID-Join in your research.
 
 ```bibtex
-@inproceedings{lim2023pidjoin,
-  author    = {Chaemin Lim, Suhyun Lee, Jinwoo Choi, Jounghoo Lee, Seongyeon Park, Hanjun Kim, Jinho Lee, and Youngsok Kim},
-  title     = {{Design and Analysis of a Processing-in-DIMM Join Algorithm: A Case Study with UPMEM DIMMs}},
-  booktitle = {Proceedings of the 2023 ACM SIGMOD International Conference on Management of Data (SIGMOD)},
-  year      = {2023},
+@article{lim2023pidjoin,
+  author  = {Chaemin Lim and Suhyun Lee and Jinwoo Choi and Jounghoo Lee and Seongyeon Park and Hanjun Kim and Jinho Lee and Youngsok Kim},
+  title   = {{Design and Analysis of a Processing-in-DIMM Join Algorithm: A Case Study with UPMEM DIMMs}},
+  journal = {Proceedings of the ACM on Management of Data (PACMMOD)},
+  volume  = {1},
+  number  = {2},
+  year    = {2023},
 }
 ```
 
