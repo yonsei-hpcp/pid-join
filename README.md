@@ -1,6 +1,6 @@
-# PID-Join \[SIGMOD '23\]
+# PID-Join \[SIGMOD '23 / PACMMOD '23\]
 
-This repository contains the source code for [PID-Join \[SIGMOD '23\]](https://doi.org/10.1145/3589258), a fast processing-in-DIMM join algorithm designed and optimized for UPMEM DIMMs.
+This repository contains the source code for [PID-Join \[SIGMOD '23 / PACMMOD '23\]](https://doi.org/10.1145/3589258), a fast processing-in-DIMM join algorithm designed and optimized for UPMEM DIMMs.
 Please cite the following paper if you utilize PID-Join in your research.
 
 ```bibtex
